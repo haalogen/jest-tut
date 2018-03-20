@@ -9,6 +9,15 @@ function fetchData () {
 }
 
 
+function failingFetchData () {
+  const data = 'peanut butter'
+  return new Promise((resolve, reject) => {
+    // Fake async data fetching
+    setTimeout(() => reject('No internet connection'), 100)
+  })
+}
+
+
 test('the data is peanut butter', () => {
   // Sets number of assertions in test
   // Useful when test async code
@@ -22,3 +31,19 @@ test('the data is peanut butter', () => {
     expect(data).toEqual('peanut butter')
   })
 }, 5000)
+
+
+test('the data is peanut butter', () => {
+  expect.assertions(1)
+
+  // You can also use the `.resolves()` matcher in your expect statement,
+  // and Jest will wait for that promise to resolve.
+  // If the promise is rejected, the test will automatically fail.
+  return expect(fetchData()).resolves.toEqual('peanut butter')
+})
+
+test('the fetch fails with an error', () => {
+  expect.assertions(1)
+
+  return expect(failingFetchData()).rejects.toMatch('connect')
+})
