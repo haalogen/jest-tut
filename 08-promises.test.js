@@ -13,12 +13,12 @@ function failingFetchData () {
   const data = 'peanut butter'
   return new Promise((resolve, reject) => {
     // Fake async data fetching
-    setTimeout(() => reject('No internet connection'), 100)
+    setTimeout(() => reject('Error: No internet connection'), 100)
   })
 }
 
 
-test('the data is peanut butter', () => {
+test('Promise: the data is peanut butter', () => {
   // Sets number of assertions in test
   // Useful when test async code
   expect.assertions(1)
@@ -33,7 +33,7 @@ test('the data is peanut butter', () => {
 }, 5000)
 
 
-test('the data is peanut butter', () => {
+test('Resolves: the data is peanut butter', () => {
   expect.assertions(1)
 
   // You can also use the `.resolves()` matcher in your expect statement,
@@ -42,8 +42,43 @@ test('the data is peanut butter', () => {
   return expect(fetchData()).resolves.toEqual('peanut butter')
 })
 
-test('the fetch fails with an error', () => {
+test('Rejects: the fetch fails with an error', () => {
   expect.assertions(1)
 
   return expect(failingFetchData()).rejects.toMatch('connect')
+})
+
+
+//
+// Async/Await
+//
+
+it('Async/Await: the data is peanut butter', async () => {
+  expect.assertions(1)
+  const data = await fetchData()
+
+  expect(data).toEqual('peanut butter')
+})
+
+it('Async/Await: the fetch fails with error', async () => {
+  expect.assertions(1)
+
+  try {
+    await failingFetchData()
+  } catch(e) {
+    expect(e).toMatch(/INTERNET/i)
+  }
+})
+
+
+// Async/Await + Reloves/Rejects
+
+it('Async/Await + Reloves/Rejects : the data is peanut butter', async () => {
+  expect.assertions(1)
+  await expect(fetchData()).resolves.toEqual('peanut butter')
+})
+
+it('Async/Await + Reloves/Rejects : the fetch fails with error', async () => {
+  expect.assertions(1)
+  await expect(failingFetchData()).rejects.toMatch(/CONNECT/i)
 })
