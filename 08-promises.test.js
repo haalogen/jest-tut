@@ -82,3 +82,10 @@ it('Async/Await + Reloves/Rejects : the fetch fails with error', async () => {
   expect.assertions(1)
   await expect(failingFetchData()).rejects.toMatch(/CONNECT/i)
 })
+
+
+
+// ONLY
+// test.only('this will be the only test that runs', () => {
+//   expect(true).toBe(false);
+// });
