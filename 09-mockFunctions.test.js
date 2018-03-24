@@ -1,12 +1,10 @@
 // A function we want to test
 // It should invoke `callback` for each item
-function forEach (items, callback) {
-
+function forEach(items, callback) {
   for (let index = 0; index < items.length; index++) {
     callback(items[index])
   }
 }
-
 
 it('', () => {
   // To test this function, we can use a mock function,
@@ -30,7 +28,6 @@ it('', () => {
   // timestamps: [ 1521748871523, 1521748871523 ] }
 })
 
-
 //
 // `.mock` property
 //
@@ -41,7 +38,7 @@ it('', () => {
   const myMock = jest.fn()
 
   const a = new myMock()
-  const b = {b: 'b'}
+  const b = { b: 'b' }
   const bound = myMock.bind(b)
   bound()
 
@@ -49,7 +46,6 @@ it('', () => {
 
   // console.log(myMock.mock.instances)
 })
-
 
 //
 // Mock Return Values
@@ -72,15 +68,12 @@ it('', () => {
   // console.log(myMock(), myMock(), myMock(), myMock(), myMock());
 })
 
-
 it('', () => {
   const filterTestFn = jest.fn()
 
   // Make the mock return `true` for the first call,
   // and `false` for the second call
-  filterTestFn
-    .mockReturnValueOnce(true)
-    .mockReturnValueOnce(false)
+  filterTestFn.mockReturnValueOnce(true).mockReturnValueOnce(false)
 
   const result = [11, 12].filter(filterTestFn)
 

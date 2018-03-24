@@ -1,4 +1,4 @@
-function compileCode () {
+function compileCode() {
   throw new Error('cannot find compiler')
 }
 

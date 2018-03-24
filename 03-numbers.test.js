@@ -5,9 +5,7 @@ test('2 + 3', () => {
   expect(value).toBeGreaterThanOrEqual(4.5)
   expect(value).toBeLessThan(6.3)
   expect(value).toBeLessThanOrEqual(6.3)
-
 })
-
 
 test('Add float numbers', () => {
   const value = 0.1 + 0.2

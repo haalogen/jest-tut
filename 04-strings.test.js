@@ -4,4 +4,3 @@ test('find substrings "ea" in "team"', () => {
   expect('team').not.toMatch(/E/)
   expect('team').toMatch(/\w/)
 })
-

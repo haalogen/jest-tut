@@ -9,9 +9,7 @@ test('null', () => {
   // toBeTruthy() matches anything that an if statement treats as true
   // toBeFalsy() matches anything that an if statement treats as false
   expect(n).toBeFalsy()
-
 })
-
 
 test('zero', () => {
   const z = 0

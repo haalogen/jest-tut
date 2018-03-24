@@ -3,10 +3,9 @@ const shoppingList = [
   'kleenex',
   'trash bags',
   'paper towels',
-  'beer',
+  'beer'
 ]
 
 test('the shopping list has beer on it', () => {
   expect(shoppingList).toContain('beer')
 })
-

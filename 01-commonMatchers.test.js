@@ -5,15 +5,13 @@ test('adds 1 + 2 to equal 3', () => {
   expect(sum(1, 2)).toBe(3)
 })
 
-
 // toEqual() recursively checks every field of an object or array.
 test('object assignment', () => {
-  const data = {one: 1}
+  const data = { one: 1 }
   data['two'] = 2
 
-  expect(data).toEqual({one: 1, two: 2})
+  expect(data).toEqual({ one: 1, two: 2 })
 })
-
 
 // Test for the opposite of a matcher
 test('adding positive numbers is not zero', () => {
@@ -23,5 +21,3 @@ test('adding positive numbers is not zero', () => {
     }
   }
 })
-
-

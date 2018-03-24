@@ -1,5 +1,5 @@
 // Some function that returns a Promise
-function fetchData () {
+function fetchData() {
   const data = 'peanut butter'
   return new Promise((resolve, reject) => {
     // Fake async data fetching
@@ -8,8 +8,7 @@ function fetchData () {
   })
 }
 
-
-function failingFetchData () {
+function failingFetchData() {
   const data = 'peanut butter'
   return new Promise((resolve, reject) => {
     // Fake async data fetching
@@ -17,21 +16,22 @@ function failingFetchData () {
   })
 }
 
+test(
+  'Promise: the data is peanut butter',
+  () => {
+    // Sets number of assertions in test
+    // Useful when test async code
+    expect.assertions(1)
 
-test('Promise: the data is peanut butter', () => {
-  // Sets number of assertions in test
-  // Useful when test async code
-  expect.assertions(1)
-
-  // Just return a promise from your test,
-  // and Jest will wait for that promise to resolve.
-  // If the promise is rejected, the test will automatically fail.
-  return fetchData()
-  .then(data => {
-    expect(data).toEqual('peanut butter')
-  })
-}, 5000)
-
+    // Just return a promise from your test,
+    // and Jest will wait for that promise to resolve.
+    // If the promise is rejected, the test will automatically fail.
+    return fetchData().then(data => {
+      expect(data).toEqual('peanut butter')
+    })
+  },
+  5000
+)
 
 test('Resolves: the data is peanut butter', () => {
   expect.assertions(1)
@@ -47,7 +47,6 @@ test('Rejects: the fetch fails with an error', () => {
 
   return expect(failingFetchData()).rejects.toMatch('connect')
 })
-
 
 //
 // Async/Await
@@ -65,11 +64,10 @@ it('Async/Await: the fetch fails with error', async () => {
 
   try {
     await failingFetchData()
-  } catch(e) {
+  } catch (e) {
     expect(e).toMatch(/INTERNET/i)
   }
 })
-
 
 // Async/Await + Reloves/Rejects
 
@@ -82,8 +80,6 @@ it('Async/Await + Reloves/Rejects : the fetch fails with error', async () => {
   expect.assertions(1)
   await expect(failingFetchData()).rejects.toMatch(/CONNECT/i)
 })
-
-
 
 // ONLY
 // test.only('this will be the only test that runs', () => {
