@@ -1,2 +1,3 @@
-node_modules/
 haters/
+node_modules/
+package-lock.json
